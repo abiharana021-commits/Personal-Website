@@ -17,9 +17,10 @@ const queryClient = new QueryClient();
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const displayName = 'Abiha';
   const email = 'hello@example.com';
   const navItems = [
-    ['About', '#about'], ['Selected work', '#work'], ['What I do', '#skills'], ['Contact', '#contact'],
+    ['About Me', '#about'], ['Projects', '#projects'], ['Skills', '#skills'], ['Contact', '#contact'],
   ];
   const projects = [
     { no: '01', name: 'Soft Signal', kind: 'IDENTITY · DIGITAL', year: '2024', tone: 'peach', mark: 's/s', desc: 'A softer kind of signal in a very loud world.' },
@@ -34,7 +35,7 @@ function Home() {
   return (
     <div className="portfolio grain min-h-[100dvh]">
       <header className="topbar">
-        <a className="wordmark" href="#home" aria-label="Go to home"><span className="mark-dot">●</span> studio / <b>your name</b></a>
+        <a className="wordmark" href="#home" aria-label="Go to home"><span className="mark-dot">●</span> <b>{displayName}'s Portfolio</b></a>
         <nav className={menuOpen ? 'nav-links nav-open' : 'nav-links'} aria-label="Main navigation">
           {navItems.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
@@ -48,9 +49,9 @@ function Home() {
             <div className="hero-copy">
               <p className="eyebrow reveal"><span className="eyebrow-line" /> INDEPENDENT CREATIVE · BASED ANYWHERE</p>
               <h1 className="hero-title reveal delay-1">Making<br />good things<br /><em>mean more.</em></h1>
-              <p className="hero-intro reveal delay-2">I’m <strong>Your Name</strong> — a designer, art director, and curious human building thoughtful identities and digital experiences for people with something to say.</p>
+              <p className="hero-intro reveal delay-2">I’m <strong>{displayName}</strong> — a curious creative drawn to thoughtful ideas, expressive visuals, and the little details that make a big difference.</p>
               <div className="hero-actions reveal delay-3">
-                <a className="button button-pink" href="#work">Explore my work <ArrowDownRight size={17} /></a>
+                <a className="button button-pink" href="#projects">Explore my work <ArrowDownRight size={17} /></a>
                 <a className="text-link" href={`mailto:${email}?subject=Hello%20there`}>Say hello <ArrowUpRight size={15} /></a>
               </div>
               <div className="hero-footnote"><span>SCROLL A LITTLE</span><ArrowDown size={14} /></div>
@@ -69,23 +70,23 @@ function Home() {
         <div className="ticker" aria-hidden="true"><div className="ticker-track marquee">{Array.from({ length: 4 }).map((_, i) => <span key={i}>A little thought goes a long way <i>·</i> GOOD WORK, GOOD PEOPLE <i>·</i> Make it matter <i>·</i></span>)}</div></div>
 
         <section className="section about-section" id="about">
-          <div className="section-label"><span>01 / THE PERSON</span><span>NOT A BIO, EXACTLY</span></div>
+          <div className="section-label"><span>01 / ABOUT ME</span><span>A LITTLE MORE HUMAN</span></div>
           <div className="about-layout">
-            <h2 className="section-title">Design is how<br />I <em>listen.</em></h2>
+            <h2 className="section-title">A little<br />about <em>me.</em></h2>
             <div className="about-copy">
-              <p className="lead">I believe the best work starts with a good question — and a little room to get it wrong before you get it right.</p>
-              <p>I’m an independent creative partner for teams doing something they care about. I bring a point of view, an open mind, and the kind of attention that finds the interesting thing hiding in plain sight.</p>
-              <p>My work moves between strategy and detail, feeling and function. The through-line is always the same: make it honest, make it useful, make it feel like <em>you.</em></p>
-              <a className="under-link" href="#contact">A bit more about working together <ArrowRight size={15} /></a>
+              <p className="lead">I’m Abiha — a curious creative with a love for meaningful ideas, expressive details, and work that brings people together.</p>
+              <p>I enjoy exploring different perspectives, finding what makes each idea distinctive, and turning it into something clear, memorable, and made with care.</p>
+              <p>I believe good work can be both thoughtful and playful. My favorite projects leave room for collaboration, experimentation, and a little unexpected joy.</p>
+              <a className="under-link" href="#contact">Let’s work together <ArrowRight size={15} /></a>
             </div>
           </div>
           <div className="about-note"><span className="note-mark">“</span><p>Good design doesn’t need to shout.<br /><em>It just needs to know what it means.</em></p><span className="note-sign">— THE WORKING THEORY</span></div>
         </section>
 
-        <section className="work-section" id="work">
+        <section className="work-section" id="projects">
           <div className="section work-inner">
-            <div className="section-label"><span>02 / SELECTED WORK</span><span>A FEW RECENT OBSESSIONS</span></div>
-            <div className="work-heading"><h2 className="section-title">Made with<br /><em>meaning.</em></h2><p>A small selection of collaborations, experiments, and things I’m proud to have helped bring into the world.</p></div>
+            <div className="section-label"><span>02 / PROJECTS</span><span>SAMPLE PROJECTS</span></div>
+            <div className="work-heading"><h2 className="section-title">Made with<br /><em>meaning.</em></h2><p>These sample concepts are ready for your own project names, visuals, and stories.</p></div>
             <div className="project-list">
               {projects.map(project => <article className="project-row" key={project.no}>
                 <div className={`project-art ${project.tone}`}>
@@ -96,7 +97,7 @@ function Home() {
                 <div className="project-info">
                   <div className="project-meta"><span>{project.kind}</span><span>{project.year}</span></div>
                   <h3>{project.name}</h3><p>{project.desc}</p>
-                  <a className="project-cta" href={`mailto:${email}?subject=${encodeURIComponent(`Tell me about ${project.name}`)}`}>Ask me about this project <ArrowUpRight size={16} /></a>
+                  <a className="project-cta" href="#contact">Start a conversation <ArrowUpRight size={16} /></a>
                 </div>
               </article>)}
             </div>
@@ -124,7 +125,7 @@ function Home() {
           </div>
         </section>
       </main>
-      <footer className="footer"><a className="wordmark" href="#home"><span className="mark-dot">●</span> studio / <b>your name</b></a><span>MADE WITH CURIOSITY & CARE</span><a href="#home">BACK TO TOP ↑</a><span>© {new Date().getFullYear()} · DEMO PORTFOLIO</span></footer>
+      <footer className="footer"><a className="wordmark" href="#home"><span className="mark-dot">●</span> <b>{displayName}'s Portfolio</b></a><span>MADE WITH CURIOSITY & CARE</span><a href="#home">BACK TO TOP ↑</a><span>© {new Date().getFullYear()} · {displayName}'s Portfolio</span></footer>
     </div>
   );
 }
